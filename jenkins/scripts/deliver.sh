@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+export TERM=dumb
 echo 'The following Maven command installs your Maven-built Java application'
 echo 'into the local Maven repository, which will ultimately be stored in'
 echo 'Jenkins''s local Maven repository (and the "maven-repository" Docker data'
@@ -24,5 +24,6 @@ echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 mvn clean install | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g"
+echo "Executing JAR file: ${NAME}-${VERSION}.jar"
 java -jar target/"${NAME}-${VERSION}.jar"
 
