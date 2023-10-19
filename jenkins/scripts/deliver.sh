@@ -27,5 +27,5 @@ set -x
 mvn clean install | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g"
 echo "Executing JAR file: ${NAME}-${VERSION}.jar"
 echo "VERSION COMMAND is ${STJEPAN}"
-java -jar target/"${NAME}-${VERSION}.jar"
+java -jar target/my-app-1.0-SNAPSHOT.jar
 
