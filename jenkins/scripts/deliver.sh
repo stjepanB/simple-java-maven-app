@@ -18,6 +18,7 @@ echo 'The following complex command behaves similarly to the previous one but'
 echo 'extracts the value of the <version/> element within <project/> instead.'
 set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
+STJEPAN=`mvn help:evaluate -Dexpression=project.version`
 set +x
 
 echo 'The following command runs and outputs the execution of your Java'
@@ -25,5 +26,6 @@ echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
 set -x
 mvn clean install | sed -r "s/\x1B\[[0-9;]*[JKmsu]//g"
 echo "Executing JAR file: ${NAME}-${VERSION}.jar"
+echo "VERSION COMMAND is ${STJEPAN}"
 java -jar target/"${NAME}-${VERSION}.jar"
 
